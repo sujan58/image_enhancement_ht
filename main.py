@@ -38,7 +38,7 @@ def apply_clahe(img):
 #         fused[:, :, i] = img1[:, :, i] * W1 + img2[:, :, i] * W2
         
 #     return np.uint8(np.clip(fused, 0, 255))
-video_path = "input1.mp4"
+video_path = "input.mp4"
 output_folder = "frames"
 
 if not os.path.exists(output_folder):

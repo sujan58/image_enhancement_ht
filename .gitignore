@@ -1,0 +1,6 @@
+__pycache__/
+frames/
+processed/
+uploads/
+temp_frames/
+*.pyc
