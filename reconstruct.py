@@ -4,13 +4,12 @@ import os
 image_folder = "frames"
 output_video = "reconstructed.mp4"
 
-# Read FPS from file
 with open("fps.txt", "r") as f:
     fps = float(f.read())
 
 print("Using FPS:", fps)
 
-images = sorted([img for img in os.listdir(image_folder) if img.endswith(".jpg")])
+images = sorted([img for img in os.listdir(image_folder) if img.endswith(".png")])
 
 if not images:
     print("No frames found!")
@@ -27,6 +26,11 @@ for image in images:
     frame = cv2.imread(frame_path)
 
     if frame is None:
+        print("Skipping corrupted frame:", image)
+        continue
+
+    if frame.shape[0] != height or frame.shape[1] != width:
+        print("Frame size mismatch:", image)
         continue
 
     video.write(frame)
